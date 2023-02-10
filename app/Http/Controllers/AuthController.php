@@ -36,7 +36,7 @@ class AuthController extends Controller
         if (Auth::attempt($infologin)) {
         return view('index');
         } else {
-        return redirect('/login')->withErrors('anda gagal');
+        return redirect()->route('login');
         };
     }
 
@@ -46,7 +46,6 @@ class AuthController extends Controller
     }
     public function postRegister(Request $request)
     {
-// dd($request);
 
          $request->validate([
          'email' => 'required|email|unique:users',
